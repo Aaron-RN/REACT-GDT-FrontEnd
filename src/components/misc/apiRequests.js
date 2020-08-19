@@ -5,12 +5,15 @@ require('dotenv').config();
 const API_URL = process.env.REACT_APP_API_URL;
 
 // Populate Musicians List
-const fetchMusicians = () => {
+const fetchMusicians = func => {
+  func(true);
   axios.get(`${API_URL}musicians`)
-    .then(response => (
-      { message: response.statusText, data: response.data }
-    ))
+    .then(response => {
+      func(false);
+      return { message: response.statusText, data: response.data };
+    })
     .catch(error => {
+      func(false);
       const errorMsg = error.response.data.error || [`${error.response.statusText}`];
       return { message: errorMsg };
     });
