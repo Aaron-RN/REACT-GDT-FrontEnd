@@ -10,8 +10,7 @@ function App() {
 
   useEffect(() => {
     const result = fetchMusicians(setIsLoading);
-    setMusicians(result);
-    console.log(result);
+    setMusicians(result.data);
   }, []);
 
   const renderLoader = (

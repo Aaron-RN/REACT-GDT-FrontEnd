@@ -15,8 +15,11 @@ const Musicians = ({ musicians }) => {
   );
 };
 
+Musicians.defaultProps = {
+  musicians: [],
+};
 Musicians.propTypes = {
-  musicians: PropTypes.instanceOf(Array).isRequired,
+  musicians: PropTypes.instanceOf(Array),
 };
 
 export default Musicians;
