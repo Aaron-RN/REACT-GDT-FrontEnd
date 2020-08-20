@@ -30,17 +30,20 @@ function App() {
           addMusician={addMusician}
           errorState={{ fetchErrors, setFetchErrors }}
         />
-        <section className="musicians">
-          {musicians.map(artist => (
-            <MusicianInfo
-              key={artist.id + artist.name}
-              musician={artist}
-              setIsLoading={setIsLoading}
-              musicianState={{ setMusicians }}
-              errorState={{ fetchErrors, setFetchErrors }}
-              updateMusician={updateMusician}
-            />
-          ))}
+        <section className="allMusicians">
+          <h3>All Local Artists</h3>
+          <div className="musicians">
+            {musicians.map(artist => (
+              <MusicianInfo
+                key={artist.id + artist.name}
+                musician={artist}
+                setIsLoading={setIsLoading}
+                musicianState={{ setMusicians }}
+                errorState={{ fetchErrors, setFetchErrors }}
+                updateMusician={updateMusician}
+              />
+            ))}
+          </div>
         </section>
       </main>
     </div>

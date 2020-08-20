@@ -44,7 +44,7 @@ const addMusician = async (setLoading, setMusicians, setErrors, musician) => {
 // Update and existing Musician
 const updateMusician = async (setLoading, setMusicians, setErrors, musicianID, musician) => {
   setLoading(true);
-  await axios.post(`${API_URL}musicians/${musicianID}`, { musician })
+  await axios.patch(`${API_URL}musicians/${musicianID}`, { musician })
     .then(response => {
       const res = { message: response.statusText, data: response.data.musicians };
       setMusicians(res.data);

@@ -1,3 +1,7 @@
+.errors {
+  color: #bd2d2d;
+}
+
 .container {
   padding: 4px;
   margin-left: auto;
@@ -5,9 +9,14 @@
   max-width: 1400px;
 }
 
+.allMusicians {
+  padding: 6px 12px;
+  background-color: #ffd4c3;
+}
 .musicians {
   width: 100%;
   display: inline-flex;
+  flex-wrap: wrap;
 }
 .musicians > article {
   flex-basis: 33%;

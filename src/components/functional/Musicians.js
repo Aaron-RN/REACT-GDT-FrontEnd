@@ -40,7 +40,7 @@ const Musicians = ({
             name="name"
             type="text"
             value={musicianName}
-            minLength="2"
+            minLength="3"
             maxLength="60"
             onChange={e => setMusicianName(e.target.value)}
             required
@@ -64,7 +64,6 @@ const Musicians = ({
                 id="isActive"
                 type="radio"
                 name="isActive"
-                value="true"
                 checked
                 onChange={e => setMusicianActive(e.target.value)}
               />
@@ -75,7 +74,6 @@ const Musicians = ({
                 id="notActive"
                 type="radio"
                 name="isActive"
-                value="false"
                 onChange={e => setMusicianActive(e.target.value)}
               />
               False

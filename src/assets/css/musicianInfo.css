@@ -1,4 +1,10 @@
 .musicianInfo > div{
   display: inline-flex;
   flex-direction: row;
+  flex-wrap: wrap;
+}
+.musicianInfo > form{
+  display: inline-flex;
+  flex-direction: row;
+  flex-wrap: wrap;
 }
