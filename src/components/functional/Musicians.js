@@ -6,11 +6,14 @@ import '../../assets/css/musicians.css';
 const Musicians = ({
   setIsLoading, musicianState, addMusician, errorState,
 }) => {
+  // Functions and State of main App component
   const { fetchErrors, setFetchErrors } = errorState;
-  const [errors, setErrors] = useState(fetchErrors);
   const { musicians, setMusicians } = musicianState;
 
+  // Current Component State Values
+  const [errors, setErrors] = useState(fetchErrors);
   const [allMusicians, setAllMusicians] = useState(musicians);
+
   const [musicianName, setMusicianName] = useState('');
   const [musicianAge, setMusicianAge] = useState(0);
   const [musicianActive, setMusicianActive] = useState(true);
