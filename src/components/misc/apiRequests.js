@@ -3,25 +3,29 @@ import axios from 'axios';
 const API_URL = process.env.REACT_APP_API_URL;
 
 // Populate Musicians List
-const fetchMusicians = async func => {
-  func(true);
+const fetchMusicians = async (setLoading, setMusicians, setErrors) => {
+  setLoading(true);
   const result = await axios.get(`${API_URL}musicians`)
-    .then(response => (
-      { message: response.statusText, data: response.data.musicians }
-    ))
+    .then(response => {
+      const res = { message: response.statusText, data: response.data.musicians };
+      setMusicians(res.data);
+      setLoading(false);
+    })
     .catch(error => {
       const errorMsg = error.response.data.error || [`${error.response.statusText}`];
-      return { message: errorMsg, data: errorMsg };
+      const res = { message: errorMsg, data: errorMsg };
+      setErrors(res.data);
+      setLoading(false);
     });
 
-  func(false);
+  setLoading(false);
   return result;
 };
 
 // Add a new Musician
 const addMusician = async (func, musician) => {
   func(true);
-  const result = axios.post(`${API_URL}musicians`, { musician })
+  const result = await axios.post(`${API_URL}musicians`, { musician })
     .then(response => (
       { message: response.statusText, data: response.data }
     ))
@@ -37,7 +41,7 @@ const addMusician = async (func, musician) => {
 // Update and existing Musician
 const updateMusician = async (func, musicianID, musician) => {
   func(true);
-  const result = axios.patch(`${API_URL}musicians/${musicianID}`, { musician })
+  const result = await axios.patch(`${API_URL}musicians/${musicianID}`, { musician })
     .then(response => (
       { message: response.statusText, data: response.data }
     ))

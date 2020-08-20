@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { fetchMusicians } from './components/misc/apiRequests';
+import { fetchMusicians, addMusician } from './components/misc/apiRequests';
 import Musicians from './components/functional/Musicians';
 // import logo from './logo.svg';
 import './assets/css/App.css';
@@ -7,11 +7,11 @@ import './assets/css/App.css';
 function App() {
   const [isLoading, setIsLoading] = useState(false);
   const [musicians, setMusicians] = useState([]);
+  const [fetchErrors, setFetchErrors] = useState('');
 
   useEffect(() => {
-    const result = fetchMusicians(setIsLoading);
-    setMusicians(result.data);
-  }, []);
+    fetchMusicians(setIsLoading, setMusicians, setFetchErrors);
+  }, [musicians]);
 
   const renderLoader = (
     <div>
@@ -21,7 +21,12 @@ function App() {
 
   return isLoading ? renderLoader : (
     <div>
-      <Musicians musicians={musicians} />
+      <Musicians
+        setIsLoading={setIsLoading}
+        musicians={musicians}
+        addMusician={addMusician}
+        fetchErrors={fetchErrors}
+      />
     </div>
   );
 }
