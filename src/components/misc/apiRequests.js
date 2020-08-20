@@ -34,7 +34,6 @@ const addMusician = async (setLoading, setMusicians, setErrors, musician) => {
     .catch(error => {
       const errorMsg = error.response.data.error || [`${error.response.statusText}`];
       const res = { message: errorMsg, data: errorMsg };
-      console.log(res.data);
       setErrors(res.data);
       setLoading(false);
     });
@@ -43,19 +42,23 @@ const addMusician = async (setLoading, setMusicians, setErrors, musician) => {
 };
 
 // Update and existing Musician
-const updateMusician = async (func, musicianID, musician) => {
-  func(true);
-  const result = await axios.patch(`${API_URL}musicians/${musicianID}`, { musician })
-    .then(response => (
-      { message: response.statusText, data: response.data }
-    ))
+const updateMusician = async (setLoading, setMusicians, setErrors, musicianID, musician) => {
+  setLoading(true);
+  await axios.post(`${API_URL}musicians/${musicianID}`, { musician })
+    .then(response => {
+      const res = { message: response.statusText, data: response.data.musicians };
+      setMusicians(res.data);
+      setErrors('');
+      setLoading(false);
+    })
     .catch(error => {
       const errorMsg = error.response.data.error || [`${error.response.statusText}`];
-      return { message: errorMsg };
+      const res = { message: errorMsg, data: errorMsg };
+      setErrors(res.data);
+      setLoading(false);
     });
 
-  func(false);
-  return result;
+  setLoading(false);
 };
 
 export { fetchMusicians, addMusician, updateMusician };

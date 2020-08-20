@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import '../../assets/css/musicians.css';
+import Errors from '../presentational/errors';
 
 const Musicians = ({
   setIsLoading, musicianState, addMusician, errorState,
@@ -13,7 +14,7 @@ const Musicians = ({
   const [errors, setErrors] = useState(fetchErrors);
 
   const [musicianName, setMusicianName] = useState('');
-  const [musicianAge, setMusicianAge] = useState(0);
+  const [musicianAge, setMusicianAge] = useState(12);
   const [musicianActive, setMusicianActive] = useState(true);
 
   useEffect(() => {
@@ -29,7 +30,7 @@ const Musicians = ({
   return (
     <section className="addMusician">
       <h3>Add a new Musician</h3>
-      <div className="errors">{errors}</div>
+      <Errors errors={errors} />
       <form onSubmit={handleSubmit} className="form">
         <div>
           <h4>Musician&apos;s Name</h4>
@@ -42,6 +43,7 @@ const Musicians = ({
             minLength="2"
             maxLength="60"
             onChange={e => setMusicianName(e.target.value)}
+            required
           />
           <h4>Musician&apos;s Age</h4>
           <input
@@ -50,9 +52,10 @@ const Musicians = ({
             name="age"
             type="number"
             value={musicianAge}
-            min="0"
+            min="12"
             max="150"
             onChange={e => setMusicianAge(e.target.value)}
+            required
           />
           <fieldset>
             <legend><h4>Is this Musician still active?</h4></legend>

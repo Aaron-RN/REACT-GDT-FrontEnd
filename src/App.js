@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import { fetchMusicians, addMusician } from './components/misc/apiRequests';
+import { fetchMusicians, addMusician, updateMusician } from './components/misc/apiRequests';
 import Musicians from './components/functional/Musicians';
-import MusicianInfo from './components/presentational/musicianInfo';
+import MusicianInfo from './components/functional/musicianInfo';
 // import logo from './logo.svg';
 import './assets/css/App.css';
 
@@ -32,7 +32,14 @@ function App() {
         />
         <section className="musicians">
           {musicians.map(artist => (
-            <MusicianInfo key={artist.id + artist.name} musician={artist} />
+            <MusicianInfo
+              key={artist.id + artist.name}
+              musician={artist}
+              setIsLoading={setIsLoading}
+              musicianState={{ setMusicians }}
+              errorState={{ fetchErrors, setFetchErrors }}
+              updateMusician={updateMusician}
+            />
           ))}
         </section>
       </main>
