@@ -26,18 +26,19 @@ const Musicians = ({
     setErrors(fetchErrors);
   }, [fetchErrors]);
 
-  const handleSubmit = () => {
+  const handleSubmit = e => {
+    e.preventDefault();
     const newMusician = { name: musicianName, age: musicianAge, active: musicianActive };
     addMusician(setIsLoading, setMusicians, setFetchErrors, newMusician);
   };
 
   return (
-    <div>
+    <section>
       <h3>Add a new Musician</h3>
       <div className="errors">{errors}</div>
       <form onSubmit={handleSubmit} className="form">
         <div>
-          <div>Musician&apos;s Name</div>
+          <h4>Musician&apos;s Name</h4>
           <input
             id="name"
             placeholder="Name of Musician"
@@ -48,7 +49,7 @@ const Musicians = ({
             maxLength="60"
             onChange={e => setMusicianName(e.target.value)}
           />
-          <div>Musician&apos;s Age</div>
+          <h4>Musician&apos;s Age</h4>
           <input
             id="age"
             placeholder="Age of Musician"
@@ -60,7 +61,7 @@ const Musicians = ({
             onChange={e => setMusicianAge(e.target.value)}
           />
           <fieldset>
-            <legend>Is this Musician still active?</legend>
+            <legend><h4>Is this Musician still active?</h4></legend>
             <label htmlFor="isActive">
               <input
                 id="isActive"
@@ -89,7 +90,7 @@ const Musicians = ({
       {allMusicians.map(musician => (
         <MusicianInfo key={musician.id + musician.name} musician={musician} />
       ))}
-    </div>
+    </section>
   );
 };
 

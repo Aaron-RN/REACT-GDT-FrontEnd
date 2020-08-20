@@ -34,6 +34,7 @@ const addMusician = async (setLoading, setMusicians, setErrors, musician) => {
     .catch(error => {
       const errorMsg = error.response.data.error || [`${error.response.statusText}`];
       const res = { message: errorMsg, data: errorMsg };
+      console.log(res.data);
       setErrors(res.data);
       setLoading(false);
     });

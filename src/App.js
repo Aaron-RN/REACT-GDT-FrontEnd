@@ -14,19 +14,22 @@ function App() {
   }, []);
 
   const renderLoader = (
-    <div>
-      Loading...
+    <div className="container">
+      <h1 className="loader">Loading...</h1>
     </div>
   );
 
   return isLoading ? renderLoader : (
-    <div>
-      <Musicians
-        setIsLoading={setIsLoading}
-        musicianState={{ musicians, setMusicians }}
-        addMusician={addMusician}
-        errorState={{ fetchErrors, setFetchErrors }}
-      />
+    <div className="container">
+      
+      <main>
+        <Musicians
+          setIsLoading={setIsLoading}
+          musicianState={{ musicians, setMusicians }}
+          addMusician={addMusician}
+          errorState={{ fetchErrors, setFetchErrors }}
+        />
+      </main>
     </div>
   );
 }
