@@ -1,27 +1,37 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
+import MusicianInfo from '../presentational/musicianInfo';
+import '../../assets/css/musicians.css';
 
 const Musicians = ({
-  setIsLoading, musicians, addMusician, fetchErrors,
+  setIsLoading, musicianState, addMusician, errorState,
 }) => {
-  const [allMusicians, setMusicians] = useState(musicians);
+  const { fetchErrors, setFetchErrors } = errorState;
+  const [errors, setErrors] = useState(fetchErrors);
+  const { musicians, setMusicians } = musicianState;
+  const [allMusicians, setAllMusicians] = useState(musicians);
   const [musicianName, setMusicianName] = useState('');
   const [musicianAge, setMusicianAge] = useState(0);
   const [musicianActive, setMusicianActive] = useState(true);
 
   useEffect(() => {
-    setMusicians(musicians);
+    setAllMusicians(musicians);
   }, [musicians]);
+
+  useEffect(() => {
+    setErrors(fetchErrors);
+  }, [fetchErrors]);
 
   const handleSubmit = () => {
     const newMusician = { name: musicianName, age: musicianAge, active: musicianActive };
-    const result = addMusician(setIsLoading, newMusician);
+    const result = addMusician(setIsLoading, setMusicians, setFetchErrors, newMusician);
     console.log(result);
   };
 
   return (
     <div>
-      <div>{fetchErrors}</div>
+      <h3>Add a new Musician</h3>
+      <div className="errors">{errors}</div>
       <form onSubmit={handleSubmit} className="form">
         <div>
           <div>Musician&apos;s Name</div>
@@ -74,20 +84,17 @@ const Musicians = ({
         <button type="submit">Add Musician</button>
       </form>
       {allMusicians.map(musician => (
-        <MusicianInfo key={musician.id + musician.name} />
+        <MusicianInfo key={musician.id + musician.name} musician={musician} />
       ))}
     </div>
   );
 };
 
-Musicians.defaultProps = {
-  musicians: [],
-};
 Musicians.propTypes = {
   setIsLoading: PropTypes.func.isRequired,
-  musicians: PropTypes.instanceOf(Array),
+  musicianState: PropTypes.instanceOf(Object).isRequired,
+  errorState: PropTypes.instanceOf(Object).isRequired,
   addMusician: PropTypes.func.isRequired,
-  fetchErrors: PropTypes.string.isRequired,
 };
 
 export default Musicians;

@@ -11,7 +11,7 @@ function App() {
 
   useEffect(() => {
     fetchMusicians(setIsLoading, setMusicians, setFetchErrors);
-  }, [musicians]);
+  }, []);
 
   const renderLoader = (
     <div>
@@ -23,9 +23,9 @@ function App() {
     <div>
       <Musicians
         setIsLoading={setIsLoading}
-        musicians={musicians}
+        musicianState={{ musicians, setMusicians }}
         addMusician={addMusician}
-        fetchErrors={fetchErrors}
+        errorState={{ fetchErrors, setFetchErrors }}
       />
     </div>
   );
