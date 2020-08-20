@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import MusicianInfo from '../presentational/musicianInfo';
 import '../../assets/css/musicians.css';
 
 const Musicians = ({
@@ -8,19 +7,14 @@ const Musicians = ({
 }) => {
   // Functions and State of main App component
   const { fetchErrors, setFetchErrors } = errorState;
-  const { musicians, setMusicians } = musicianState;
+  const { setMusicians } = musicianState;
 
   // Current Component State Values
   const [errors, setErrors] = useState(fetchErrors);
-  const [allMusicians, setAllMusicians] = useState(musicians);
 
   const [musicianName, setMusicianName] = useState('');
   const [musicianAge, setMusicianAge] = useState(0);
   const [musicianActive, setMusicianActive] = useState(true);
-
-  useEffect(() => {
-    setAllMusicians(musicians);
-  }, [musicians]);
 
   useEffect(() => {
     setErrors(fetchErrors);
@@ -33,7 +27,7 @@ const Musicians = ({
   };
 
   return (
-    <section>
+    <section className="addMusician">
       <h3>Add a new Musician</h3>
       <div className="errors">{errors}</div>
       <form onSubmit={handleSubmit} className="form">
@@ -87,9 +81,6 @@ const Musicians = ({
         </div>
         <button type="submit">Add Musician</button>
       </form>
-      {allMusicians.map(musician => (
-        <MusicianInfo key={musician.id + musician.name} musician={musician} />
-      ))}
     </section>
   );
 };

@@ -1,0 +1,4 @@
+.musicianInfo > div{
+  display: inline-flex;
+  flex-direction: row;
+}

@@ -5,6 +5,14 @@
   max-width: 1400px;
 }
 
+.musicians {
+  width: 100%;
+  display: inline-flex;
+}
+.musicians > article {
+  flex-basis: 33%;
+}
+
 .loader {
   display: flex;
   width: 100%;
