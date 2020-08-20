@@ -9,6 +9,7 @@ const fetchMusicians = async (setLoading, setMusicians, setErrors) => {
     .then(response => {
       const res = { message: response.statusText, data: response.data.musicians };
       setMusicians(res.data);
+      setErrors('');
       setLoading(false);
     })
     .catch(error => {
@@ -27,6 +28,7 @@ const addMusician = async (setLoading, setMusicians, setErrors, musician) => {
     .then(response => {
       const res = { message: response.statusText, data: response.data.musicians };
       setMusicians(res.data);
+      setErrors('');
       setLoading(false);
     })
     .catch(error => {

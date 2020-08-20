@@ -9,6 +9,7 @@ const Musicians = ({
   const { fetchErrors, setFetchErrors } = errorState;
   const [errors, setErrors] = useState(fetchErrors);
   const { musicians, setMusicians } = musicianState;
+
   const [allMusicians, setAllMusicians] = useState(musicians);
   const [musicianName, setMusicianName] = useState('');
   const [musicianAge, setMusicianAge] = useState(0);
@@ -24,8 +25,7 @@ const Musicians = ({
 
   const handleSubmit = () => {
     const newMusician = { name: musicianName, age: musicianAge, active: musicianActive };
-    const result = addMusician(setIsLoading, setMusicians, setFetchErrors, newMusician);
-    console.log(result);
+    addMusician(setIsLoading, setMusicians, setFetchErrors, newMusician);
   };
 
   return (
