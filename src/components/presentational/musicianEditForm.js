@@ -62,7 +62,10 @@ MusicianEditForm.propTypes = {
   setMusicianName: PropTypes.func.isRequired,
   setMusicianAge: PropTypes.func.isRequired,
   setMusicianActive: PropTypes.func.isRequired,
-  errors: PropTypes.string.isRequired,
+  errors: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.instanceOf(Array),
+  ]).isRequired,
   handleEdit: PropTypes.func.isRequired,
   handleUpdate: PropTypes.func.isRequired,
 };

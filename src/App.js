@@ -15,15 +15,13 @@ function App() {
   }, []);
 
   const renderLoader = (
-    <div className="container">
-      <h1 className="loader">Loading...</h1>
-    </div>
+    <div className="loaderContainer"><h1 className="loader">Loading...</h1></div>
   );
 
-  return isLoading ? renderLoader : (
-    <div className="container">
-
-      <main>
+  return (
+    <div>
+      {isLoading && renderLoader}
+      <main className="container">
         <Musicians
           setIsLoading={setIsLoading}
           musicianState={{ setMusicians }}

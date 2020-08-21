@@ -42,19 +42,21 @@ const addMusician = async (setLoading, setMusicians, setErrors, musician) => {
 };
 
 // Update and existing Musician
-const updateMusician = async (setLoading, setMusicians, setErrors, musicianID, musician) => {
+const updateMusician = async (
+  setLoading, setMusicians, setErrors, musicianID, musician, componentMounted,
+) => {
   setLoading(true);
   await axios.patch(`${API_URL}musicians/${musicianID}`, { musician })
     .then(response => {
       const res = { message: response.statusText, data: response.data.musicians };
       setMusicians(res.data);
-      setErrors('');
+      if (componentMounted.current) setErrors('');
       setLoading(false);
     })
     .catch(error => {
       const errorMsg = error.response.data.error || [`${error.response.statusText}`];
       const res = { message: errorMsg, data: errorMsg };
-      setErrors(res.data);
+      if (componentMounted.current) setErrors(res.data);
       setLoading(false);
     });
 

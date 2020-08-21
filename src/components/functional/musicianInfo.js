@@ -1,26 +1,31 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import '../../assets/css/musicianInfo.css';
 import MusicianEditForm from '../presentational/musicianEditForm';
 
 const MusicianInfo = ({
-  musician, setIsLoading, musicianState, errorState, updateMusician,
+  musician, setIsLoading, musicianState, updateMusician,
 }) => {
   // Functions and State of main App component
-  const { fetchErrors, setFetchErrors } = errorState;
+  // const { fetchErrors, setFetchErrors } = errorState;
   const { setMusicians } = musicianState;
 
   // Current Component State Values
-  const [errors, setErrors] = useState(fetchErrors);
+  const isMounted = useRef(false);
+  const [errors, setErrors] = useState('');
 
-  const [beingEdited, startEditor] = useState(false);
+  const formErrors = errors !== '';
+  const [beingEdited, startEditor] = useState(formErrors);
   const [musicianName, setMusicianName] = useState(musician.name);
   const [musicianAge, setMusicianAge] = useState(musician.age);
   const [musicianActive, setMusicianActive] = useState(musician.active);
 
   useEffect(() => {
-    setErrors(fetchErrors);
-  }, [fetchErrors]);
+    const mountComponent = () => { isMounted.current = true; };
+    mountComponent();
+    // cleanUp function - ComponentWillUnmount
+    return () => { isMounted.current = false; };
+  });
 
   const handleEdit = () => {
     startEditor(!beingEdited);
@@ -32,7 +37,7 @@ const MusicianInfo = ({
   const handleUpdate = e => {
     e.preventDefault();
     const newMusician = { name: musicianName, age: musicianAge, active: musicianActive };
-    updateMusician(setIsLoading, setMusicians, setFetchErrors, musician.id, newMusician);
+    updateMusician(setIsLoading, setMusicians, setErrors, musician.id, newMusician, isMounted);
   };
 
   return beingEdited
