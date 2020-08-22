@@ -18,7 +18,7 @@ const MusicianEditForm = ({
         type="text"
         value={musicianName}
         minLength="3"
-        maxLength="60"
+        maxLength="32"
         onChange={e => setMusicianName(e.target.value)}
       />
       <input
