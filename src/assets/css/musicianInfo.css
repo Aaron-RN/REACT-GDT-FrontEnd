@@ -14,7 +14,6 @@
 }
 .musicianInfo > table{
   display: inline-table;
-  /* border: 1px solid #fff; */
 }
 .musicianInfo > table td, .musicianInfo > table th {
   padding: 4px 8px;
