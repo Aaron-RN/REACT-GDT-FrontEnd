@@ -38,7 +38,7 @@ In order for this application to work you will also need to setup your back-end 
 After you have successfully setup your back-end, you will need to change the URL the front-end connects to.
 
 1. Navigate to your local directory of this cloned repository
-2. Navigate to the src/components/misc folder and open the apiRequests.js file
+2. Navigate to the `src/components/misc` folder and open the apiRequests.js file
 3. **a)** On line 3 where you would see const ```const API_URL = process.env.REACT_APP_API_URL;```, replace ```process.env.REACT_APP_API_URL;``` with the url of your back-end server that you would have setup following the ["Setting up The Back-End"](https://github.com/Aaron-RN/ROR-GDT-Assessment) Guide  
 **b)** Or if you are using a hosting server with the option for environment variables as I am, you can simple place the URL of your API in an environment variables called REACT_APP_API_URL
 
