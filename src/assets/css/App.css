@@ -16,11 +16,11 @@
 }
 .musicians {
   width: 100%;
-  display: inline-flex;
+  display: flex;
   flex-wrap: wrap;
 }
 .musicians > article {
-  flex-basis: 33%;
+  flex-basis: 100%;
 }
 .loaderContainer {
   position: fixed;
@@ -35,6 +35,27 @@
 .loader {
   text-shadow: 0 0 2px #3a3a3a;
   animation: Loader infinite 4s ease alternate-reverse;
+}
+
+/* Media queries */
+
+/* Medium devices (landscape tablets, 720px - 1023px) */
+@media only screen and (min-width: 721px) and (max-width: 1023px) {
+  .musicians {
+    display: inline-flex;
+  }
+  .musicians > article {
+    flex-basis: 50%;
+  }
+}
+/* laptop devices (landscape tablets, 1024px and up) */
+@media only screen and (min-width: 1024px) {
+  .musicians {
+    display: inline-flex;
+  }
+  .musicians > article {
+    flex-basis: 33%;
+  }
 }
 
 @keyframes Loader {
