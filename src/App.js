@@ -14,6 +14,7 @@ function App() {
     fetchMusicians(setIsLoading, setMusicians, setFetchErrors);
   }, []);
 
+  const sortedArtists = musicians.sort((a, b) => a.id - b.id);
   const renderLoader = (
     <div className="loaderContainer"><h1 className="loader">Loading...</h1></div>
   );
@@ -34,7 +35,7 @@ function App() {
         <section className="allMusicians">
           <h2>All Local Artists</h2>
           <div className="musicians">
-            {musicians.map(artist => (
+            {sortedArtists.map(artist => (
               <MusicianInfo
                 key={artist.id + artist.name}
                 musician={artist}
