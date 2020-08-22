@@ -1,5 +1,12 @@
+:root {
+  --bg-blue: #d7f4ff;
+  --bg-blue2: #c7eaf7;
+  --bg-green: #ccf7df;
+  --bg-orange: #ffd4c3;
+}
+
 .navBG {
-  background-color: #ccf7df;
+  background-color: var(--bg-green);
 }
 
 .errors {
@@ -12,6 +19,11 @@
   margin-right: auto;
   max-width: 1400px;
 }
+
+.inline-block { display: inline-block; }
+.center { margin-left: auto; margin-right: auto; }
+.text-center { text-align: center; }
+.text-left { text-align: left; }
 
 .allMusicians {
   padding: 6px 12px;

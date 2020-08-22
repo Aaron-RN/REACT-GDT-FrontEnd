@@ -22,7 +22,7 @@ function App() {
     <div>
       {isLoading && renderLoader}
       <header className="navBG">
-        <nav className="container"><h2>Government Digital Transformation Unit - Assessment</h2></nav>
+        <nav className="container"><h2>GDT Unit - Assessment</h2></nav>
       </header>
       <main className="container">
         <Musicians

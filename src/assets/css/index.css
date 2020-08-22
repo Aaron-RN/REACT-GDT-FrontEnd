@@ -1,3 +1,5 @@
+html { box-sizing: border-box; }
+
 *,
 *::before,
 *::after {
@@ -19,6 +21,10 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+h3, h4, h5, h6 {
+  margin-bottom: 8px;
 }
 
 code {

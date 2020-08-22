@@ -1,4 +1,22 @@
+.addMusicianContainer {
+  color: #555;
+  padding: 0px 12px;
+  background-color: var(--bg-blue2);
+}
 .addMusician {
   padding: 6px 12px;
-  background-color: #d7f4ff;
+  background-color: var(--bg-blue);
+  border: 4px solid #fff;
+  border-radius: 2px;
+}
+
+.addMusician .form input {
+  font-size: 14px;
+  padding: 4px;
+  border: 2px solid var(--bg-blue2);
+  border-radius: 2px;
+}
+
+.addMusician .form input:focus {
+  outline-color: var(--bg-orange);
 }

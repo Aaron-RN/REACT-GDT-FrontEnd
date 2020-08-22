@@ -21,67 +21,75 @@ const Musicians = ({
     setErrors(fetchErrors);
   }, [fetchErrors]);
 
+  const resetState = () => {
+    setMusicianName('');
+    setMusicianAge(12);
+    setMusicianActive(true);
+  };
   const handleSubmit = e => {
     e.preventDefault();
     const newMusician = { name: musicianName, age: musicianAge, active: musicianActive };
     addMusician(setIsLoading, setMusicians, setFetchErrors, newMusician);
+    resetState();
   };
 
   return (
-    <section className="addMusician">
-      <h3>Add a new Musician</h3>
-      <Errors errors={errors} />
-      <form onSubmit={handleSubmit} className="form">
-        <div>
-          <h4>Musician&apos;s Name</h4>
-          <input
-            id="name"
-            placeholder="Name of Musician"
-            name="name"
-            type="text"
-            value={musicianName}
-            minLength="3"
-            maxLength="60"
-            onChange={e => setMusicianName(e.target.value)}
-            required
-          />
-          <h4>Musician&apos;s Age</h4>
-          <input
-            id="age"
-            placeholder="Age of Musician"
-            name="age"
-            type="number"
-            value={musicianAge}
-            min="12"
-            max="150"
-            onChange={e => setMusicianAge(e.target.value)}
-            required
-          />
-          <fieldset>
-            <legend><h4>Is this Musician still active?</h4></legend>
-            <label htmlFor="isActive">
-              <input
-                id="isActive"
-                type="radio"
-                name="isActive"
-                checked
-                onChange={e => setMusicianActive(e.target.value)}
-              />
-              True
-            </label>
-            <label htmlFor="notActive">
-              <input
-                id="notActive"
-                type="radio"
-                name="isActive"
-                onChange={e => setMusicianActive(e.target.value)}
-              />
-              False
-            </label>
-          </fieldset>
-        </div>
-        <button type="submit">Add Musician</button>
-      </form>
+    <section className="addMusicianContainer text-center">
+      <div className="inline-block addMusician">
+        <h2>Add a new Musician</h2>
+        <Errors errors={errors} />
+        <form onSubmit={handleSubmit} className="form">
+          <div>
+            <h3>Musician&apos;s Name</h3>
+            <input
+              id="name"
+              placeholder="Name of Musician"
+              name="name"
+              type="text"
+              value={musicianName}
+              minLength="3"
+              maxLength="60"
+              onChange={e => setMusicianName(e.target.value)}
+              required
+            />
+            <h3>Musician&apos;s Age</h3>
+            <input
+              id="age"
+              placeholder="Age of Musician"
+              name="age"
+              type="number"
+              value={musicianAge}
+              min="12"
+              max="150"
+              onChange={e => setMusicianAge(e.target.value)}
+              required
+            />
+            <fieldset>
+              <legend><h3>Is this Musician still active?</h3></legend>
+              <label htmlFor="isActive">
+                <input
+                  id="isActive"
+                  type="radio"
+                  name="isActive"
+                  checked
+                  onChange={e => setMusicianActive(e.target.value)}
+                />
+                True
+              </label>
+              <label htmlFor="notActive">
+                <input
+                  id="notActive"
+                  type="radio"
+                  name="isActive"
+                  onChange={e => setMusicianActive(e.target.value)}
+                />
+                False
+              </label>
+            </fieldset>
+          </div>
+          <button type="submit">Add Musician</button>
+        </form>
+      </div>
     </section>
   );
 };
