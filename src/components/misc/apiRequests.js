@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_URL = 'https://arn-gdt-assessment.netlify.app/';
+const API_URL = process.env.REACT_APP_API_URL;
 
 // Populate Musicians List
 const fetchMusicians = async (setLoading, setMusicians, setErrors) => {
