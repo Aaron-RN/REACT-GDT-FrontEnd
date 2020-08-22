@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import '../../assets/css/musicianInfo.css';
 import MusicianEditForm from '../presentational/musicianEditForm';
@@ -7,11 +7,9 @@ const MusicianInfo = ({
   musician, setIsLoading, musicianState, updateMusician,
 }) => {
   // Functions and State of main App component
-  // const { fetchErrors, setFetchErrors } = errorState;
   const { setMusicians } = musicianState;
 
   // Current Component State Values
-  const isMounted = useRef(false);
   const [errors, setErrors] = useState('');
 
   const formErrors = errors !== '';
@@ -19,13 +17,6 @@ const MusicianInfo = ({
   const [musicianName, setMusicianName] = useState(musician.name);
   const [musicianAge, setMusicianAge] = useState(musician.age);
   const [musicianActive, setMusicianActive] = useState(musician.active);
-
-  useEffect(() => {
-    const mountComponent = () => { isMounted.current = true; };
-    mountComponent();
-    // cleanUp function - ComponentWillUnmount
-    return () => { isMounted.current = false; };
-  });
 
   const handleEdit = () => {
     startEditor(!beingEdited);
@@ -37,7 +28,7 @@ const MusicianInfo = ({
   const handleUpdate = e => {
     e.preventDefault();
     const newMusician = { name: musicianName, age: musicianAge, active: musicianActive };
-    updateMusician(setIsLoading, setMusicians, setErrors, musician.id, newMusician, isMounted);
+    updateMusician(setIsLoading, setMusicians, setErrors, musician.id, newMusician);
   };
 
   return beingEdited
@@ -70,7 +61,6 @@ MusicianInfo.propTypes = {
   musician: PropTypes.instanceOf(Object).isRequired,
   setIsLoading: PropTypes.func.isRequired,
   musicianState: PropTypes.instanceOf(Object).isRequired,
-  errorState: PropTypes.instanceOf(Object).isRequired,
   updateMusician: PropTypes.func.isRequired,
 };
 
