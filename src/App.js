@@ -21,6 +21,9 @@ function App() {
   return (
     <div>
       {isLoading && renderLoader}
+      <header className="navBG">
+        <nav className="container"><h2>Government Digital Transformation Unit - Assessment</h2></nav>
+      </header>
       <main className="container">
         <Musicians
           setIsLoading={setIsLoading}
