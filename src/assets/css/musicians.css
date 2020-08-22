@@ -30,11 +30,10 @@
   background-color: #fff;
   margin-top: 8px;
   padding: 10px 16px;
-  border: 2px solid var(--bg-green);
+  border: 2px solid #c098a7;
   border-radius: 4px;
 }
 
 .addMusician .form button:hover {
-  background-color: var(--bg-green);
   transform: scale(1.15);
 }
