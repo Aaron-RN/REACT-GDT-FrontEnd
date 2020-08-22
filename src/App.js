@@ -32,7 +32,7 @@ function App() {
           errorState={{ fetchErrors, setFetchErrors }}
         />
         <section className="allMusicians">
-          <h3>All Local Artists</h3>
+          <h2>All Local Artists</h2>
           <div className="musicians">
             {musicians.map(artist => (
               <MusicianInfo

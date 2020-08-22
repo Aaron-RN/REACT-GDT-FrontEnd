@@ -1,16 +1,10 @@
 :root {
-  --bg-blue: #effbff;
-  --bg-blue2: #fff;
-  --bg-green: #ccf7df;
-  --bg-orange: #ffd4c3;
-}
-
-/* :root {
   --bg-blue: #d7f4ff;
   --bg-blue2: #cfeefa;
   --bg-green: #ccf7df;
   --bg-orange: #ffd4c3;
-} */
+  --bg-orange2: #f0dcd4;
+}
 
 .navBG {
   background-color: var(--bg-green);
@@ -35,7 +29,7 @@
 .allMusicians {
   padding: 6px 12px;
   margin-top: 8px;
-  background-color: #ffd4c3;
+  background-color: var(--bg-orange);
   border-radius: 2px;
 }
 .musicians {

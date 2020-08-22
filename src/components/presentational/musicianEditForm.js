@@ -6,8 +6,10 @@ const MusicianEditForm = ({
   musicianName, musicianAge, setMusicianName, setMusicianAge, setMusicianActive,
   errors, handleEdit, handleUpdate,
 }) => (
-  <article className="musicianInfo">
-    <h4>{musicianName}</h4>
+  <article className="musicianInfoEdit">
+    <header className="header">
+      <h4 className="header-name">{musicianName}</h4>
+    </header>
     <Errors errors={errors} />
     <form onSubmit={handleUpdate}>
       <input
@@ -51,8 +53,8 @@ const MusicianEditForm = ({
         </label>
       </div>
       <button type="submit">Update</button>
+      <button type="button" onClick={handleEdit}>Cancel</button>
     </form>
-    <button type="button" onClick={handleEdit}>Cancel</button>
   </article>
 );
 

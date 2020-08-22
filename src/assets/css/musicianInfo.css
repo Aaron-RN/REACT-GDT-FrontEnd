@@ -1,10 +1,109 @@
-.musicianInfo > div{
-  display: inline-flex;
-  flex-direction: row;
-  flex-wrap: wrap;
+.musicianInfo {
+  padding: 4px;
+  border-bottom: 2px solid #fff;
+}
+.musicianInfo:nth-child(odd) {
+  background-color: var(--bg-orange2);
+}
+.musicianInfo .header {
+  background-color: #e4b4be;
+}
+.musicianInfo .header-name, .musicianInfoEdit .header-name {
+  display: inline-block;
+  padding: 0 8px;
+}
+.musicianInfo > table{
+  display: inline-table;
+  /* border: 1px solid #fff; */
+}
+.musicianInfo > table td, .musicianInfo > table th {
+  padding: 4px 8px;
+  border-bottom: 1px solid #fff;
+  border-right: 1px solid #fff;
+}
+.musicianInfo .id {
+  background-color: #e9dadd;
 }
 .musicianInfo > form{
   display: inline-flex;
   flex-direction: row;
   flex-wrap: wrap;
+}
+
+.musicianInfo button {
+  cursor: pointer;
+  display: inline-block;
+  padding: 1px 12px;
+  color: #555;
+  background-color: #fff;
+  border: 1px solid var(--bg-blue);
+  border-radius: 4px;
+  margin-left: 6px;
+}
+
+.musicianInfo button:hover {
+  transform: scale(1.05);
+}
+
+.musicianInfoEdit {
+  padding: 4px;
+  border-bottom: 2px solid #fff;
+}
+.musicianInfoEdit:nth-child(odd) {
+  background-color: var(--bg-orange2);
+}
+.musicianInfoEdit .header {
+  background-color: #ddfda1;
+}
+.musicianInfoEdit form {
+  display: inline-block;
+}
+.musicianInfoEdit form input {
+  font-size: 14px;
+  padding: 4px;
+  border: 2px solid var(--bg-orange);
+  border-radius: 2px;
+}
+.musicianInfoEdit form input:focus {
+  outline-color: var(--bg-orange);
+}
+
+.musicianInfoEdit form button {
+  cursor: pointer;
+  padding: 2px 12px;
+  color: #555;
+  background-color: #fff;
+  border: 1px solid var(--bg-blue);
+  border-radius: 4px;
+  margin: 4px 4px;
+}
+
+.musicianInfoEdit form button:hover {
+  background-color: var(--bg-green);
+  transform: scale(1.15);
+}
+.musicianInfoEdit form button[type="button"]:hover {
+  background-color: #ffc1c1;
+  transform: scale(1.15);
+}
+
+/* Media queries */
+
+/* Medium devices (landscape tablets, 720px - 1023px) */
+@media only screen and (min-width: 721px) and (max-width: 1023px) {
+  .musicianInfo:nth-child(even) {
+    border-right: 2px solid #fff;
+  }
+  .musicianInfoEdit:nth-child(even) {
+    border-right: 2px solid #fff;
+  }
+}
+/* laptop devices (landscape tablets, 1024px and up) */
+@media only screen and (min-width: 1024px) {
+  .musicianInfo:nth-child(2n) {
+    border-right: 2px solid #fff;
+  }
+  .musicianInfoEdit:nth-child(2n) {
+    border-right: 2px solid #fff;
+  }
 }
