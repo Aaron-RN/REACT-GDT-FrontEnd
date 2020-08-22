@@ -24,6 +24,7 @@ body {
 }
 
 h3, h4, h5, h6 {
+  margin-top: 4px;
   margin-bottom: 8px;
 }
 

@@ -46,12 +46,18 @@ const MusicianInfo = ({
     ) : (
       <article className="musicianInfo">
         <h4>{musician.name}</h4>
-        <div>
-          <div>{musician.id}</div>
-          <div>{musician.name}</div>
-          <div>{musician.age}</div>
-          <div>{musician.active ? 'true' : 'false'}</div>
-        </div>
+        <table>
+          <tr>
+            <th><h5>ID</h5></th>
+            <th><h5>Age</h5></th>
+            <th><h5>Active</h5></th>
+          </tr>
+          <tr>
+            <td>{musician.id}</td>
+            <td>{musician.age}</td>
+            <td>{musician.active ? 'true' : 'false'}</td>
+          </tr>
+        </table>
         <button type="button" onClick={handleEdit}>Edit</button>
       </article>
     );
