@@ -1,4 +1,6 @@
 # REACT-GDT-FrontEnd
+[![Netlify Status](https://api.netlify.com/api/v1/badges/0e3b95bf-2a99-423c-8517-a257b1d36556/deploy-status)](https://app.netlify.com/sites/arn-gdt-assessment/deploys)
+
 ### Version 1.0
 The Front-end for the Government Digital Transformation Assessment web-app that connects with a RESTful API through HTTP Requests
 
