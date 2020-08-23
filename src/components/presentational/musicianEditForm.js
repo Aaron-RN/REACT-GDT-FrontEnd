@@ -33,21 +33,21 @@ const MusicianEditForm = ({
       />
       <div>
         <h5>Musician still Active?</h5>
-        <label htmlFor="isActive">
+        <label htmlFor="isActiveEdit">
           <input
-            id="isActive"
+            id="isActiveEdit"
             type="radio"
             name="artistActive"
-            onChange={e => setMusicianActive(e.target.value)}
+            onChange={e => setMusicianActive(e.currentTarget.value)}
           />
           True
         </label>
-        <label htmlFor="notActive">
+        <label htmlFor="notActiveEdit">
           <input
-            id="notActive"
+            id="notActiveEdit"
             type="radio"
             name="artistActive"
-            onChange={e => setMusicianActive(e.target.value)}
+            onChange={e => setMusicianActive(e.currentTarget.value)}
           />
           False
         </label>

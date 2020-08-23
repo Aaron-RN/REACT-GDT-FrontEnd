@@ -72,7 +72,7 @@ const Musicians = ({
                   type="radio"
                   name="isActive"
                   checked
-                  onChange={e => setMusicianActive(e.target.value)}
+                  onChange={e => setMusicianActive(e.currentTarget.value)}
                 />
                 True
               </label>
@@ -81,7 +81,7 @@ const Musicians = ({
                   id="notActive"
                   type="radio"
                   name="isActive"
-                  onChange={e => setMusicianActive(e.target.value)}
+                  onChange={e => setMusicianActive(e.currentTarget.value)}
                 />
                 False
               </label>
