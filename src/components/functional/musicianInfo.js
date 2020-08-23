@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import '../../assets/css/musicianInfo.css';
 import MusicianEditForm from '../presentational/musicianEditForm';
@@ -18,6 +18,10 @@ const MusicianInfo = ({
   const [musicianAge, setMusicianAge] = useState(musician.age);
   const [musicianActive, setMusicianActive] = useState(musician.active);
 
+  useEffect(() => {
+    startEditor(errors !== '');
+  }, [errors]);
+
   const handleEdit = () => {
     startEditor(!beingEdited);
     // Reset Values to saved values
@@ -28,8 +32,8 @@ const MusicianInfo = ({
   const handleUpdate = e => {
     e.preventDefault();
     const newMusician = { name: musicianName, age: musicianAge, active: musicianActive };
-    startEditor(false);
     updateMusician(setIsLoading, setMusicians, setErrors, musician.id, newMusician);
+    startEditor(false);
   };
 
   return beingEdited
