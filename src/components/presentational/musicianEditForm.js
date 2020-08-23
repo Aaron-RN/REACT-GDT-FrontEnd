@@ -38,6 +38,7 @@ const MusicianEditForm = ({
             id="isActiveEdit"
             type="radio"
             name="artistActive"
+            value
             onChange={e => setMusicianActive(e.currentTarget.value)}
           />
           True
@@ -47,6 +48,7 @@ const MusicianEditForm = ({
             id="notActiveEdit"
             type="radio"
             name="artistActive"
+            value={false}
             onChange={e => setMusicianActive(e.currentTarget.value)}
           />
           False

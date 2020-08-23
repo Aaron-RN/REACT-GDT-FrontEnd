@@ -29,7 +29,8 @@ const MusicianInfo = ({
     e.preventDefault();
     const newMusician = { name: musicianName, age: musicianAge, active: musicianActive };
     updateMusician(setIsLoading, setMusicians, setErrors, musician.id, newMusician);
-    startEditor(formErrors);
+    const anyErrors = errors !== '';
+    startEditor(anyErrors);
   };
 
   return beingEdited
