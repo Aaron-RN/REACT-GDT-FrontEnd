@@ -25,12 +25,11 @@ const MusicianInfo = ({
     setMusicianAge(musician.age);
     setMusicianActive(musician.active);
   };
-  const handleUpdate = async e => {
+  const handleUpdate = e => {
     e.preventDefault();
     const newMusician = { name: musicianName, age: musicianAge, active: musicianActive };
-    await updateMusician(setIsLoading, setMusicians, setErrors, musician.id, newMusician);
-    const anyErrors = errors !== '';
-    startEditor(anyErrors);
+    startEditor(false);
+    updateMusician(setIsLoading, setMusicians, setErrors, musician.id, newMusician);
   };
 
   return beingEdited
